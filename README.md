@@ -9,7 +9,7 @@
 µBench allows users to control various properties of the microservice applications it creates, including:
 - The dependency graph of the microservice application
 - The behaviors of composing microservices using a portfolio of stress functions (e.g., for CPU, memory, I/O, network) or implementing new ones
-- The microservice-to-microservice API (HTTP or gRPC)
+- The microservice-to-microservice API (HTTP)
 - The CPU and Memory resources assigned to microservices and their number of replicas
 
 µBench provides a comprehensive monitoring framework consisting of Prometheus, Grafana, Istio, Kiali, and Jaeger, through which you can observe the performance of the produced benchmark applications.
