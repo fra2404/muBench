@@ -56,7 +56,10 @@ def undeploy_items(folder):
     print("######################")
     print(f"We are going to UNDEPLOY the yaml files in the following folder: {folder}")
     print("######################")
-    config.load_kube_config()
+    try:
+        config.load_incluster_config()
+    except:
+        config.load_kube_config()
     k8s_apps_api = client.AppsV1Api()
     k8s_core_api = client.CoreV1Api()
     items = list()

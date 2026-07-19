@@ -54,7 +54,7 @@ def create_deployment_service_yaml_files(workmodel, k8s_parameters, nfs, output_
             if "scheduler-name" in workmodel[service].keys():
                 f = f.replace("{{SCHEDULER_NAME}}", str(workmodel[service]["scheduler-name"]))
             else:
-                f = f.replace("{{SCHEDULER_NAME}}", "default-scheduler")
+                f = f.replace("{{SCHEDULER_NAME}}", k8s_parameters.get("scheduler-name", "default-scheduler"))
             if "sidecar" in workmodel[service].keys():
                 f = f.replace("{{SIDECAR}}", SIDECAR_TEMPLATE % (service, workmodel[service]["sidecar"]))
             else:
@@ -140,7 +140,7 @@ def create_deployment_service_yaml_files(workmodel, k8s_parameters, nfs, output_
             if "scheduler-name" in workmodel[service].keys():
                 f = f.replace("{{SCHEDULER_NAME}}", str(workmodel[service]["scheduler-name"]))
             else:
-                f = f.replace("{{SCHEDULER_NAME}}", "default-scheduler")
+                f = f.replace("{{SCHEDULER_NAME}}", k8s_parameters.get("scheduler-name", "default-scheduler"))
             
         with open(f"{output_path}/yamls/{k8s_parameters['prefix_yaml_file']}-DeploymentNginxGw.yaml", "w") as file:
             file.write(f)
